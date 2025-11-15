@@ -48,6 +48,6 @@ This computes keyword coverage for each sample question, acting as a lightweight
 - Replace the heuristic reranker with Cohere Rerank or a BERT cross-encoder.
 - Plug REFRAG modules into an LLM (e.g., Llama-3) to test token savings.
 - Add evaluation metrics from RAGAS or LLM-as-a-judge to replace keyword coverage.
+- Open `notebooks/rag_playground.ipynb` to script multi-step experiments (build pipeline, run queries, evaluate keyword coverage) without touching the CLI.
 
 Iteratively evolve the pipeline following `docs/master_plan.md`, logging each experiment to build intuition about advanced RAG behaviour.
-

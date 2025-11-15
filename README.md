@@ -21,6 +21,7 @@ Learn Retrieval-Augmented Generation (RAG) concepts with runnable code that mirr
 - `docs/diagrams.md` – ASCII diagrams for the full pipeline, reranking, and REFRAG.
 - `docs/tutorial.md` – hands-on walkthrough for running the CLI + evaluation.
 - `tests/` – pytest suite covering data loading, chunking, and pipeline execution.
+- `notebooks/` – Jupyter playground to explore the modules interactively.
 - `requirements.txt` – Python dependencies (FAISS, sentence-transformers, etc.) for experimentation.
 
 ## Quick Start
@@ -32,6 +33,7 @@ pip install -r requirements.txt
 python -m src.pipeline ask "How does reranking improve the RAG pipeline?"
 python -m src.evaluation run  # optional keyword-coverage eval
 pytest  # run unit tests
+jupyter notebook notebooks/rag_playground.ipynb  # optional notebook exploration
 ```
 
 After installing dependencies you can run the CLI above, open the `src/` modules in a notebook or REPL, extend them into a complete RAG service, or integrate with frameworks such as LangChain, LlamaIndex, or Haystack.
