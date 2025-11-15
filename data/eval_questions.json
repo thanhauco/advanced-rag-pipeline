@@ -1,0 +1,17 @@
+[
+  {
+    "question": "How does reranking improve the RAG pipeline?",
+    "expected_keywords": ["rerank", "precision", "cross-encoder", "noise"],
+    "notes": "Targets post-retrieval stage benefits."
+  },
+  {
+    "question": "What is the compress-sense-expand idea in REFRAG?",
+    "expected_keywords": ["compress", "sense", "expand", "RL"],
+    "notes": "Validates REFRAG summary." 
+  },
+  {
+    "question": "Which metrics keep the advanced RAG pipeline healthy?",
+    "expected_keywords": ["faithfulness", "relevance", "precision", "RAGAS"],
+    "notes": "Covers evaluation stage." 
+  }
+]

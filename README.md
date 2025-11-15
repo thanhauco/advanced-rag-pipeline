@@ -5,6 +5,7 @@ Learn Retrieval-Augmented Generation (RAG) concepts with runnable code that mirr
 ## What's Inside
 
 - `data/knowledge_base.json` – curated facts from the article, ready for indexing.
+- `data/eval_questions.json` – sample queries + keywords for pipeline evaluation.
 - `src/` – Python package with the following modules:
   - `models.py` – data structures (documents + chunks).
   - `data_loader.py` – utilities to load the JSON knowledge base.
@@ -15,8 +16,10 @@ Learn Retrieval-Augmented Generation (RAG) concepts with runnable code that mirr
   - `refrag.py` – REFRAG-inspired compress/sense/expand components.
   - `generation.py` – simple template generator to inspect retrieved context.
   - `pipeline.py` – Typer CLI that wires the stages together (`python -m src.pipeline ask "question"`).
+  - `evaluation.py` – CLI to score keyword coverage over sample questions.
 - `docs/master_plan.md` – step-by-step learning roadmap covering indexing through REFRAG enhancements.
 - `docs/diagrams.md` – ASCII diagrams for the full pipeline, reranking, and REFRAG.
+- `docs/tutorial.md` – hands-on walkthrough for running the CLI + evaluation.
 - `requirements.txt` – Python dependencies (FAISS, sentence-transformers, etc.) for experimentation.
 
 ## Quick Start
@@ -26,6 +29,7 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 python -m src.pipeline ask "How does reranking improve the RAG pipeline?"
+python -m src.evaluation run  # optional keyword-coverage eval
 ```
 
 After installing dependencies you can run the CLI above, open the `src/` modules in a notebook or REPL, extend them into a complete RAG service, or integrate with frameworks such as LangChain, LlamaIndex, or Haystack.
