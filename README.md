@@ -6,10 +6,17 @@ Learn Retrieval-Augmented Generation (RAG) concepts with runnable code that mirr
 
 - `data/knowledge_base.json` – curated facts from the article, ready for indexing.
 - `src/` – Python package with the following modules:
-  - `models.py` – data structures for documents.
+  - `models.py` – data structures (documents + chunks).
   - `data_loader.py` – utilities to load the JSON knowledge base.
   - `query_processor.py` – demonstrates synonym expansion, Hypothetical Document Embeddings (HyDE), and multi-query decomposition.
+  - `indexing.py` – semantic chunker and TF-IDF hybrid indexer.
+  - `retrieval.py` – hybrid retriever (dense-like + lexical) plus context aggregation.
+  - `reranker.py` – lightweight cross-encoder–style reranker.
+  - `refrag.py` – REFRAG-inspired compress/sense/expand components.
+  - `generation.py` – simple template generator to inspect retrieved context.
+  - `pipeline.py` – Typer CLI that wires the stages together (`python -m src.pipeline ask "question"`).
 - `docs/master_plan.md` – step-by-step learning roadmap covering indexing through REFRAG enhancements.
+- `docs/diagrams.md` – ASCII diagrams for the full pipeline, reranking, and REFRAG.
 - `requirements.txt` – Python dependencies (FAISS, sentence-transformers, etc.) for experimentation.
 
 ## Quick Start
@@ -18,9 +25,10 @@ Learn Retrieval-Augmented Generation (RAG) concepts with runnable code that mirr
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+python -m src.pipeline ask "How does reranking improve the RAG pipeline?"
 ```
 
-After installing dependencies you can open the `src/` modules in a notebook or REPL, extend them into a complete RAG service, or integrate with frameworks such as LangChain, LlamaIndex, or Haystack.
+After installing dependencies you can run the CLI above, open the `src/` modules in a notebook or REPL, extend them into a complete RAG service, or integrate with frameworks such as LangChain, LlamaIndex, or Haystack.
 
 ## Learning Objectives
 
@@ -36,4 +44,3 @@ After installing dependencies you can open the `src/` modules in a notebook or R
 ## Next Steps
 
 See `docs/master_plan.md` for a detailed build roadmap and suggested experiments. Extend `src/` with retrieval pipelines (FAISS, BM25), rerankers, REFRAG selectors, and evaluation scripts tied to your projects.
-
