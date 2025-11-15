@@ -20,6 +20,7 @@ Learn Retrieval-Augmented Generation (RAG) concepts with runnable code that mirr
 - `docs/master_plan.md` – step-by-step learning roadmap covering indexing through REFRAG enhancements.
 - `docs/diagrams.md` – ASCII diagrams for the full pipeline, reranking, and REFRAG.
 - `docs/tutorial.md` – hands-on walkthrough for running the CLI + evaluation.
+- `tests/` – pytest suite covering data loading, chunking, and pipeline execution.
 - `requirements.txt` – Python dependencies (FAISS, sentence-transformers, etc.) for experimentation.
 
 ## Quick Start
@@ -30,6 +31,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python -m src.pipeline ask "How does reranking improve the RAG pipeline?"
 python -m src.evaluation run  # optional keyword-coverage eval
+pytest  # run unit tests
 ```
 
 After installing dependencies you can run the CLI above, open the `src/` modules in a notebook or REPL, extend them into a complete RAG service, or integrate with frameworks such as LangChain, LlamaIndex, or Haystack.
