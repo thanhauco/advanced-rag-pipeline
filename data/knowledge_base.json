@@ -1,0 +1,101 @@
+[
+  {
+    "id": "adv-rag-overview",
+    "title": "Advanced RAG Pipeline Overview",
+    "content": "Retrieval-Augmented Generation (RAG) grounds large language models in external knowledge. Advanced RAG systems optimize indexing, retrieval, post-processing, generation, and evaluation to reduce hallucinations, tame context limits, and scale to millions of documents.",
+    "metadata": {
+      "category": "pipeline",
+      "source": "provided-text"
+    }
+  },
+  {
+    "id": "stage-indexing",
+    "title": "Indexing & Preparation",
+    "content": "Pre-process documents through semantic chunking, hybrid dense+lexical indexing, metadata enrichment, and even knowledge-graph linking. These steps improve retrieval precision by roughly 20-50% and let the system handle unstructured and structured inputs.",
+    "metadata": {
+      "stage": "indexing",
+      "keywords": ["chunking", "hybrid indexing", "metadata"]
+    }
+  },
+  {
+    "id": "stage-query-processing",
+    "title": "Query Processing",
+    "content": "Transform incoming questions via query rewriting, Hypothetical Document Embeddings (HyDE), and multi-query decomposition. These techniques boost recall for ambiguous or multi-hop questions and cut down on mismatches.",
+    "metadata": {
+      "stage": "query-processing"
+    }
+  },
+  {
+    "id": "stage-retrieval",
+    "title": "Retrieval",
+    "content": "Use hybrid search (vector plus lexical), multi-stage retrieval, or graph traversal to fetch diverse, relevant chunks. Coarse-to-fine search scales well, even for corpora with millions of documents.",
+    "metadata": {
+      "stage": "retrieval"
+    }
+  },
+  {
+    "id": "stage-post-processing",
+    "title": "Post-Retrieval Processing",
+    "content": "Rerank candidates, compress or summarize long chunks, and fuse overlapping passages. These steps filter noise and shrink context windows by 30-40% so the generator spends tokens on the highest-signal evidence.",
+    "metadata": {
+      "stage": "post-processing"
+    }
+  },
+  {
+    "id": "stage-generation",
+    "title": "Generation",
+    "content": "Prompt the LLM with adaptive strategies, use self-consistency, or iterate in agentic loops that critique and trigger new retrieval when the context looks weak. This yields faithful, multi-turn answers.",
+    "metadata": {
+      "stage": "generation"
+    }
+  },
+  {
+    "id": "stage-eval",
+    "title": "Evaluation & Iteration",
+    "content": "Track faithfulness, answer relevance, and precision/recall with frameworks like RAGAS. Run A/B experiments with human judges or LLM-based graders to detect drift and keep the pipeline tuned.",
+    "metadata": {
+      "stage": "evaluation"
+    }
+  },
+  {
+    "id": "refrag-overview",
+    "title": "REFRAG Overview",
+    "content": "REFRAG treats retrieval as a compress-sense-expand workflow that scales RAG to 16x larger contexts while using 2-4x fewer tokens and running up to 30x faster. It compresses passages into small embeddings, uses an RL policy to sense relevant micro-chunks, and expands only those before decoding.",
+    "metadata": {
+      "category": "refrag",
+      "source": "meta-superintelligence-labs"
+    }
+  },
+  {
+    "id": "refrag-compress",
+    "title": "REFRAG Compression",
+    "content": "Split each retrieved passage into 16-token micro-chunks and encode them with a lightweight ~100M parameter model. A 1K-token passage becomes about 60 embeddings, cutting token load by 10-20x upfront.",
+    "metadata": {
+      "stage": "compress"
+    }
+  },
+  {
+    "id": "refrag-sense",
+    "title": "REFRAG Sense/Select",
+    "content": "An RL-trained policy network scores the compressed chunks and selects the most relevant 20-30%. Rewards come from downstream generation quality, similar to RLHF.",
+    "metadata": {
+      "stage": "sense"
+    }
+  },
+  {
+    "id": "refrag-expand",
+    "title": "REFRAG Expand & Decode",
+    "content": "Only the selected chunks are re-expanded to tokens and injected directly into the LLM decoder (e.g., Llama-3), bypassing naive prompt stuffing and saving compute.",
+    "metadata": {
+      "stage": "expand"
+    }
+  },
+  {
+    "id": "reranking-overview",
+    "title": "Why Rerank",
+    "content": "Reranking reorders the top candidates from fast embedding search with a more precise cross-encoder. It boosts NDCG@10 by 15-40%, cuts hallucinations, saves tokens, handles multilingual or noisy data, and plugs neatly into RAG or REFRAG flows.",
+    "metadata": {
+      "category": "reranking"
+    }
+  }
+]
