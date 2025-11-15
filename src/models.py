@@ -13,3 +13,12 @@ class Document:
     content: str
     metadata: Dict[str, Any] = field(default_factory=dict)
 
+
+@dataclass
+class DocumentChunk:
+    """Chunked snippet linked to a parent document."""
+
+    chunk_id: str
+    document_id: str
+    text: str
+    metadata: Dict[str, Any] = field(default_factory=dict)
