@@ -1,0 +1,17 @@
+queries:
+  - "How does reranking improve the RAG pipeline?"
+  - "What is the compress-sense-expand idea in REFRAG?"
+  - "Which metrics keep the advanced RAG pipeline healthy?"
+reranker_settings:
+  - name: hybrid_0.5_0.5
+    retrieval_weight: 0.5
+    rerank_weight: 0.5
+    top_k: 4
+  - name: retrieval_heavy
+    retrieval_weight: 0.7
+    rerank_weight: 0.3
+    top_k: 4
+  - name: rerank_heavy
+    retrieval_weight: 0.3
+    rerank_weight: 0.7
+    top_k: 6

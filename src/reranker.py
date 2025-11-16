@@ -23,7 +23,12 @@ class CrossEncoderReranker:
         self.vectorizer = TfidfVectorizer(stop_words="english")
 
     def rerank(
-        self, query: str, candidates: List[RetrievalResult], top_k: int = 4
+        self,
+        query: str,
+        candidates: List[RetrievalResult],
+        top_k: int = 4,
+        retrieval_weight: float = 0.5,
+        rerank_weight: float = 0.5,
     ) -> List[RerankedResult]:
         if not candidates:
             return []
@@ -35,8 +40,8 @@ class CrossEncoderReranker:
         similarities = cosine_similarity(query_vec, doc_vecs)[0]
 
         reranked: List[RerankedResult] = []
-        for result, sim in zip(candidates, similarities):
-            blended = 0.5 * result.score + 0.5 * sim
+        for idx, (result, sim) in enumerate(zip(candidates, similarities)):
+            blended = retrieval_weight * result.score + rerank_weight * sim
             reranked.append(RerankedResult(chunk=result.chunk, score=blended))
         reranked.sort(key=lambda item: item.score, reverse=True)
         return reranked[:top_k]
