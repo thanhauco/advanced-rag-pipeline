@@ -172,3 +172,9 @@ Each diagram maps directly to the Grok article’s processes, giving you a visua
                                                                                   v
                                                                                [Prompt to LLM]
 ```
+
+Scoring heuristic in `src/reranker.py`:
+
+- Generate TF-IDF embeddings for each candidate chunk (document) plus the query.
+- Use cosine similarity between query and document vectors as a cross-encoder proxy.
+- Blend the similarity with the first-stage retrieval score via adjustable weights (default 0.5/0.5) before taking the top-k.

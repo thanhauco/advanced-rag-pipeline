@@ -33,6 +33,8 @@ class CrossEncoderReranker:
         if not candidates:
             return []
 
+        # Treat each candidate chunk as a short document, embed alongside the query,
+        # then use cosine similarity as a cross-encoder proxy.
         documents = [result.chunk.text for result in candidates]
         matrix = self.vectorizer.fit_transform(documents + [query])
         query_vec = matrix[-1]
@@ -41,6 +43,8 @@ class CrossEncoderReranker:
 
         reranked: List[RerankedResult] = []
         for idx, (result, sim) in enumerate(zip(candidates, similarities)):
+            # Blend the first-stage retrieval score with the cross-encoder score to
+            # simulate adjustable reranker weighting.
             blended = retrieval_weight * result.score + rerank_weight * sim
             reranked.append(RerankedResult(chunk=result.chunk, score=blended))
         reranked.sort(key=lambda item: item.score, reverse=True)
