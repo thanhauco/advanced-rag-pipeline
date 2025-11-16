@@ -25,6 +25,7 @@ Learn Retrieval-Augmented Generation (RAG) concepts with runnable code that mirr
 - `tests/` – pytest suite covering data loading, chunking, and pipeline execution.
 - `notebooks/` – Jupyter playground to explore the modules interactively.
 - `configs/` – YAML templates for REFRAG selector tuning and reranker sweeps.
+- `reports/` – JSON/CSV outputs from evaluation scripts (auto-created).
 - `requirements.txt` – Python dependencies (FAISS, sentence-transformers, etc.) for experimentation.
 
 ## Quick Start
@@ -36,7 +37,7 @@ pip install -r requirements.txt
 python -m src.pipeline ask "How does reranking improve the RAG pipeline?"
 python -m src.evaluation run  # optional keyword-coverage eval
 python -m src.refrag_tuning tune  # compare REFRAG selector configs
-python -m src.reranker_eval evaluate  # reranker weighting sweep
+python -m src.reranker_eval evaluate --output reports/reranker_eval.json
 pytest  # run unit tests
 jupyter notebook notebooks/rag_playground.ipynb  # optional notebook exploration
 ```

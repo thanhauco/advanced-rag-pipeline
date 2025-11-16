@@ -50,6 +50,6 @@ This computes keyword coverage for each sample question, acting as a lightweight
 - Add evaluation metrics from RAGAS or LLM-as-a-judge to replace keyword coverage.
 - Open `notebooks/rag_playground.ipynb` to script multi-step experiments (build pipeline, run queries, evaluate keyword coverage) without touching the CLI.
 - Run `python -m src.refrag_tuning tune --config configs/refrag_config.yaml` to compare micro-chunk sizes and retain ratios; update the YAML with your own sweeps.
-- Run `python -m src.reranker_eval evaluate --config configs/reranker_eval.yaml` to study how different retrieval/rerank weightings influence average relevance scores.
+- Run `python -m src.reranker_eval evaluate --config configs/reranker_eval.yaml --output reports/reranker_eval.json` to study how different retrieval/rerank weightings influence average relevance scores and log the results.
 
 Iteratively evolve the pipeline following `docs/master_plan.md`, logging each experiment to build intuition about advanced RAG behaviour.
