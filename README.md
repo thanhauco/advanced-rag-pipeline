@@ -14,6 +14,7 @@ Learn Retrieval-Augmented Generation (RAG) concepts with runnable code that mirr
   - `retrieval.py` – hybrid retriever (dense-like + lexical) plus context aggregation.
   - `reranker.py` – lightweight cross-encoder–style reranker.
   - `refrag.py` – REFRAG-inspired compress/sense/expand components.
+  - `refrag_tuning.py` – selector sweep CLI with YAML configs.
   - `generation.py` – simple template generator to inspect retrieved context.
   - `pipeline.py` – Typer CLI that wires the stages together (`python -m src.pipeline ask "question"`).
   - `evaluation.py` – CLI to score keyword coverage over sample questions.
@@ -22,6 +23,7 @@ Learn Retrieval-Augmented Generation (RAG) concepts with runnable code that mirr
 - `docs/tutorial.md` – hands-on walkthrough for running the CLI + evaluation.
 - `tests/` – pytest suite covering data loading, chunking, and pipeline execution.
 - `notebooks/` – Jupyter playground to explore the modules interactively.
+- `configs/` – YAML templates for REFRAG selector tuning.
 - `requirements.txt` – Python dependencies (FAISS, sentence-transformers, etc.) for experimentation.
 
 ## Quick Start
@@ -32,6 +34,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python -m src.pipeline ask "How does reranking improve the RAG pipeline?"
 python -m src.evaluation run  # optional keyword-coverage eval
+python -m src.refrag_tuning tune  # compare REFRAG selector configs
 pytest  # run unit tests
 jupyter notebook notebooks/rag_playground.ipynb  # optional notebook exploration
 ```

@@ -1,0 +1,15 @@
+selectors:
+  - name: conservative
+    micro_chunk_size: 12
+    retain_ratio: 0.2
+  - name: balanced
+    micro_chunk_size: 16
+    retain_ratio: 0.3
+  - name: exploratory
+    micro_chunk_size: 24
+    retain_ratio: 0.4
+
+queries:
+  - "How does reranking improve the RAG pipeline?"
+  - "What is the compress-sense-expand idea in REFRAG?"
+  - "Which metrics keep the advanced RAG pipeline healthy?"

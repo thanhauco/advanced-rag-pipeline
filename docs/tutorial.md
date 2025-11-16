@@ -49,5 +49,6 @@ This computes keyword coverage for each sample question, acting as a lightweight
 - Plug REFRAG modules into an LLM (e.g., Llama-3) to test token savings.
 - Add evaluation metrics from RAGAS or LLM-as-a-judge to replace keyword coverage.
 - Open `notebooks/rag_playground.ipynb` to script multi-step experiments (build pipeline, run queries, evaluate keyword coverage) without touching the CLI.
+- Run `python -m src.refrag_tuning tune --config configs/refrag_config.yaml` to compare micro-chunk sizes and retain ratios; update the YAML with your own sweeps.
 
 Iteratively evolve the pipeline following `docs/master_plan.md`, logging each experiment to build intuition about advanced RAG behaviour.
